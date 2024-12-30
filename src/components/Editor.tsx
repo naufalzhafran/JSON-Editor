@@ -13,13 +13,16 @@ import { JSONBeautify, safeJsonParse } from "@/lib/utils";
 export default function Editor() {
   const [code, setCode] = useState(``);
 
+  const isJSONValid = Boolean(safeJsonParse(code));
+
   return (
     <main>
       <button
         className="pretty-button"
         onClick={() => setCode(JSONBeautify(code))}
+        disabled={!isJSONValid}
       >
-        Beautify
+        {isJSONValid ? "Beautify" : "Invalid"}
       </button>
       <CodeMirror
         className="editor"

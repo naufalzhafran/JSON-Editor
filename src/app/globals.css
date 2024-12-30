@@ -53,6 +53,11 @@ main .pretty-button {
   z-index: 10;
 }
 
+.pretty-button:disabled{
+  background-color: red;
+  color: white;
+}
+
 main .editor {
   width: 50%;
   height: 100%;
