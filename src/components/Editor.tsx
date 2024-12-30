@@ -2,16 +2,19 @@
 
 import { useState } from "react";
 
-import JsonView from "@uiw/react-json-view";
+import { linter, lintGutter } from "@codemirror/lint";
+import { json, jsonParseLinter } from "@codemirror/lang-json";
 
+import JsonView from "@uiw/react-json-view";
 import CodeMirror from "@uiw/react-codemirror";
-import { json } from "@codemirror/lang-json";
 import { materialLight } from "@uiw/codemirror-theme-material";
 
 import { JSONBeautify, safeJsonParse } from "@/lib/utils";
 
+const jsonLinter = () => linter(jsonParseLinter());
+
 export default function Editor() {
-  const [code, setCode] = useState(``);
+  const [code, setCode] = useState(`{}`);
 
   const isJSONValid = Boolean(safeJsonParse(code));
 
@@ -30,7 +33,6 @@ export default function Editor() {
           searchKeymap: false,
           foldKeymap: false,
           completionKeymap: false,
-          lintKeymap: false,
           foldGutter: false,
           highlightActiveLine: false,
           highlightActiveLineGutter: false,
@@ -39,7 +41,7 @@ export default function Editor() {
         value={code}
         height="100%"
         theme={materialLight}
-        extensions={[json()]}
+        extensions={[json(), jsonLinter(), lintGutter()]}
         onChange={(val) => setCode(val)}
       />
 

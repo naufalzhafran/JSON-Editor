@@ -49,11 +49,11 @@ body {
 main .pretty-button {
   position: absolute;
   top: 5px;
-  left: calc(50% - 100px);
+  left: calc(50% - 110px);
   z-index: 10;
 }
 
-.pretty-button:disabled{
+.pretty-button:disabled {
   background-color: red;
   color: white;
 }
@@ -69,4 +69,26 @@ main .editor {
 
 main .viewer {
   padding: 5px;
+  overflow: scroll;
+  height: calc(100% - 10px);
+}
+
+@media only screen and (max-width: 600px) {
+  .page main {
+    flex-direction: column;
+  }
+
+  main .editor {
+    width: 100%;
+    height: 50%;
+  }
+
+  main .pretty-button {
+    right: 5px;
+    left: unset;
+  }
+
+  main .viewer {
+    height: 50%;
+  }
 }
