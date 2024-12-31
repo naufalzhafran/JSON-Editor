@@ -17,3 +17,13 @@ export function JSONBeautify(str: string) {
 
   return str;
 }
+
+export function JSONMinify(str: string) {
+  const obj = safeJsonParse(str);
+
+  if (obj) {
+    return JSON.stringify(obj);
+  }
+
+  return str;
+}

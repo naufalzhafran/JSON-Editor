@@ -46,39 +46,59 @@ body {
   height: 100%;
 }
 
-main .pretty-button {
+main .pretty-button,
+main .minify-button {
   position: absolute;
   top: 5px;
-  left: calc(50% - 110px);
   z-index: 10;
 }
 
-.pretty-button:disabled {
+.pretty-button {
+  left: calc(50% - 110px);
+}
+
+.minify-button {
+  left: calc(50% - 195px);
+}
+
+.pretty-button:disabled,
+.minify-button:disabled {
   background-color: red;
   color: white;
 }
 
-main .editor {
+main .editor-container {
   width: 50%;
   height: 100%;
+  background-color: #fafafa;
 }
 
-.editor .cm-focused {
+.editor {
+  padding-top: 50px;
+  height: calc(100% - 50px);
+}
+
+.editor-container .cm-focused {
   outline: none;
 }
 
 main .viewer {
   padding: 5px;
   overflow: scroll;
-  height: calc(100% - 10px);
+  height: calc(100% - 55px);
+  padding-top: 50px;
 }
 
 @media only screen and (max-width: 600px) {
+  button {
+    font-size: 12px;
+  }
+  
   .page main {
     flex-direction: column;
   }
 
-  main .editor {
+  main .editor-container {
     width: 100%;
     height: 50%;
   }
@@ -88,7 +108,13 @@ main .viewer {
     left: unset;
   }
 
+  main .minify-button {
+    right: 100px;
+    left: unset;
+  }
+
   main .viewer {
     height: 50%;
+    padding-top: unset;
   }
 }
