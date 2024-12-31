@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lightweight JSON Editor  
 
-## Getting Started
+A lightweight and user-friendly JSON editor built with [Next.js 15](https://nextjs.org/), [@uiw/react-codemirror](https://uiwjs.github.io/react-codemirror/), and [@uiw/react-json-view](https://www.npmjs.com/package/@uiw/react-json-view).  
+This web app allows users to quickly view, edit, and format JSON data effortlessly. Ideal for developers and data enthusiasts seeking a simple yet powerful tool.  
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features  
+- **JSON Viewing**: View JSON data in a clean and structured format.  
+- **JSON Editing**: Edit your JSON with real-time validation.  
+- **JSON Formatting**: Format and beautify JSON data with ease.  
+- **Lightweight and Fast**: Built with optimized modern web technologies for a snappy experience.  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Demo  
+[Live Demo](https://json.nzcodenplay.xyz/) 
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Usage
 
-## Learn More
+1.	Copy and paste your JSON data into the editor.
+2.	Make changes as needed; errors will be highlighted in real-time.
+3.	Use the built-in formatting tools to beautify or minify JSON.
 
-To learn more about Next.js, take a look at the following resources:
+## Built With
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js 15: Framework for React-based web apps.
+- @uiw/react-codemirror: Text editor for the code editing experience.
+- @uiw/react-json-view: Component for visualizing and editing JSON data.
