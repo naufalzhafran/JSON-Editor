@@ -8,13 +8,20 @@ import { json, jsonParseLinter } from "@codemirror/lang-json";
 import JsonView from "@uiw/react-json-view";
 import CodeMirror from "@uiw/react-codemirror";
 import { materialLight } from "@uiw/codemirror-theme-material";
+import { historyField } from "@codemirror/commands";
 
 import { JSONBeautify, JSONMinify, safeJsonParse } from "@/lib/utils";
 
 const jsonLinter = () => linter(jsonParseLinter());
 
+const stateFields = { history: historyField };
+
 export default function Editor() {
-  const [code, setCode] = useState(`{}`);
+  const serializedState =
+    typeof window !== "undefined" && localStorage.getItem("editorstate");
+  const value =
+    (typeof window !== "undefined" && localStorage.getItem("code")) || "";
+  const [code, setCode] = useState(value || `{}`);
 
   const isJSONValid = Boolean(safeJsonParse(code));
 
@@ -50,7 +57,21 @@ export default function Editor() {
           value={code}
           theme={materialLight}
           extensions={[json(), jsonLinter(), lintGutter()]}
-          onChange={(val) => setCode(val)}
+          initialState={
+            serializedState
+              ? {
+                  json: JSON.parse(serializedState || ""),
+                  fields: stateFields,
+                }
+              : undefined
+          }
+          onChange={(value, viewUpdate) => {
+            setCode(value);
+            localStorage.setItem("code", value);
+
+            const state = viewUpdate.state.toJSON(stateFields);
+            localStorage.setItem("editorstate", JSON.stringify(state));
+          }}
         />
       </div>
 
